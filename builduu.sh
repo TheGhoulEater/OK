@@ -110,7 +110,7 @@ telegram_post(){
         DWD=${TDRIVE}${rom}/${ZIPNAME}
         telegram_message "
         *$rom Build Finished Successfully*
-        *Build Time:* `\$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
+        *Build Time:* \`$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
         *ROM:* \`${ZIPNAME}\`
         *MD5 Checksum:* \`${MD5CHECK}\`
         *Download Link:* [Here](${DWD})
