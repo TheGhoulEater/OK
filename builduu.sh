@@ -85,7 +85,7 @@ ccache -z
 case "${rom}" in
  "ProjectElixir") mka sepolicy -j18 2>&1 | tee build.log
     ;;
- "ProjectSakura") mka bacon 2>&1 | tee build.log
+ "ProjectSakura") make sepolicy -j18 2>&1 | tee build.log
     ;;
  *) echo "Invalid option!"
     exit 1
