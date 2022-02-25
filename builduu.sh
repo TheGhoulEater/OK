@@ -20,7 +20,10 @@ rom_one(){
 }
 
 rom_two(){
-     echo "Still Donno"
+     repo init --depth=1 --no-repo-verify -u https://github.com/ProjectSakura/android -b 12 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b sakura-12 .repo/local_manifests
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
+     source build/envsetup.sh && lunch lineage_vince-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
 }
 
 # setup TG message and build posts
@@ -42,7 +45,7 @@ telegram_build() {
 case "${rom}" in
  "ProjectElixir") rom_one
     ;;
- "donno") rom_two
+ "ProjectSakura") rom_two
     ;;
  *) echo "Invalid option!"
     exit 1
@@ -78,7 +81,7 @@ ccache -z
 case "${rom}" in
  "ProjectElixir") mka bacon -j18 2>&1 | tee build.log
     ;;
- "donno") brunch donno  | tee build.log
+ "ProjectSakura") mka bacon -j18 2>&1 | tee build.log
     ;;
  *) echo "Invalid option!"
     exit 1
