@@ -16,14 +16,20 @@ rom_one(){
      repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/manifest -b snow -g default,-device,-mips,-darwin,-notdefault
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b elixir-12 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
-     source build/envsetup.sh && lunch aosp_vince-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
+     repo sync --force-sync -j1 --fail-fast
+     source build/envsetup.sh
+     lunch aosp_vince-userdebug
+     export SELINUX_IGNORE_NEVERALLOWS=true
 }
 
 rom_two(){
      repo init --depth=1 --no-repo-verify -u https://github.com/ProjectSakura/android -b 12 -g default,-device,-mips,-darwin,-notdefault
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b sakura-12 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
-     source build/envsetup.sh && lunch lineage_vince-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
+     repo sync --force-sync -j1 --fail-fast
+     source build/envsetup.sh
+     lunch lineage_vince-userdebug
+     export SELINUX_IGNORE_NEVERALLOWS=true
 }
 
 # setup TG message and build posts
