@@ -110,7 +110,6 @@ telegram_post(){
         DWD=${TDRIVE}${rom}/${ZIPNAME}
         telegram_message "
         *$rom Build Finished Successfully*
-        
         *Build Time:* `\$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
         *ROM:* \`${ZIPNAME}\`
         *MD5 Checksum:* \`${MD5CHECK}\`
@@ -127,7 +126,6 @@ telegram_post(){
         telegram_build ${LOG2} "
         *$rom Build Failed to Compile*
     *Build Time:* \`$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
-
     *Build Log:* [Here](${TRANSFER})
     *Date:*  $(date +"%d-%m-%Y %T")" &> /dev/null
  fi
