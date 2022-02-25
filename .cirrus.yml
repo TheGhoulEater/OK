@@ -7,12 +7,11 @@ task:
     memory: 32G
   environment:
     CIRRUS_WORKING_DIR: "/tmp/ci"
-  ok_script:
-      - echo Gay
-#  down_cc_background_script:
-#      - bash dc.sh
-#  up_cc_background_script:
-#      - bash uc.sh
+
+  down_cc_background_script:
+      - bash dc.sh
+  up_cc_background_script:
+      - bash uc.sh
 #  builduu_script:
 #      - bash builduu.sh
 #  final_up_cc_script:
