@@ -6,7 +6,7 @@ task:
     cpu: 8
     memory: 32G
   environment:
-    CIRRUS_WORKING_DIR: "/tmp/ci
+    CIRRUS_WORKING_DIR: "/tmp/ci"
   ok_script:
       - echo Gay
 #  down_cc_background_script:
