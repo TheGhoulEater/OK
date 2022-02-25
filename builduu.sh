@@ -16,6 +16,7 @@ rom_one(){
      repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/official_manifest -b snow -g default,-device,-mips,-darwin,-notdefault
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b elixir-12 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync --force-broken -j$(nproc --all)
+     repo sync --force-sync -j1
      . build/envsetup.sh && lunch aosp_vince-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
 }
 
