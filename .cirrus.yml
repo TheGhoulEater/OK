@@ -12,6 +12,8 @@
     BOTTOKEN: ""
     CHATID: ""
     GH_TOKEN: ""
+    rom: "ProjectElixir"
+    T_DEVICE: "vince"
   down_cc_background_script:
       - bash dc.sh
   up_cc_background_script:

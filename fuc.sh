@@ -10,7 +10,7 @@ ZIPNAME=$(basename ${ZIP})
 zst_tar ()
 {
     time tar "-I zstd -1 -T16" -cf $1.tar.zst $1
-    rclone copy --drive-chunk-size 256M --stats 1s $1.tar.zst vince:$1/$rom -P
+    rclone copy --drive-chunk-size 256M --stats 1s $1.tar.zst vince-new:$1/$rom -P
 }
 
 # Let session sleep on error for debug
