@@ -1,4 +1,4 @@
-task:
+ task:
   name: IDFK
   timeout_in: 120m
   container:
@@ -7,7 +7,11 @@ task:
     memory: 32G
   environment:
     CIRRUS_WORKING_DIR: "/tmp/ci"
-
+    rc_conf: ""
+    TDRIVE: ""
+    BOTTOKEN: ""
+    CHATID: ""
+    GH_TOKEN: ""
   down_cc_background_script:
       - bash dc.sh
   up_cc_background_script:
