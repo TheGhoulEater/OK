@@ -17,9 +17,8 @@ rom_one(){
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b elixir-12 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
      repo sync --force-sync -j1 --fail-fast
-     source build/envsetup.sh
-     lunch aosp_vince-userdebug
      export SELINUX_IGNORE_NEVERALLOWS=true
+     source build/envsetup.sh && lunch aosp_vince-userdebug
 }
 
 rom_two(){
@@ -27,9 +26,8 @@ rom_two(){
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b sakura-12 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
      repo sync --force-sync -j1 --fail-fast
-     source build/envsetup.sh
-     lunch lineage_vince-userdebug
      export SELINUX_IGNORE_NEVERALLOWS=true
+     source build/envsetup.sh && lunch lineage_vince-userdebug
 }
 
 # setup TG message and build posts
