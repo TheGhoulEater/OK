@@ -12,8 +12,7 @@ task:
       - bash dc.sh
   up_cc_background_script:
       - bash uc.sh
-#  builduu_script:
-#      - bash builduu.sh
-#  final_up_cc_script:
-#      - bash fuc.sh
-#
+  builduu_script:
+      - bash builduu.sh
+ final_up_cc_script:
+      - bash fuc.sh
