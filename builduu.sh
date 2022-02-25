@@ -13,8 +13,9 @@ echo "https://PrajjuS:${GH_TOKEN}@github.com" > ~/.git-credentials
 
 # Rom repo sync & dt ( Add roms and update case functions )
 rom_one(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/official_manifest -b snow -g default,-device,-mips,-darwin,-notdefault
+     repo init --depth=1 --no-repo-verify -u git://github.com/Project-Elixir/official_manifest -b snow -g default,-device,-mips,-darwin,-notdefault
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b elixir-12 .repo/local_manifests
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      . build/envsetup.sh && lunch aosp_vince-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
 }
@@ -98,7 +99,7 @@ echo "${ZIP}"
 # Post Build finished with Time,duration,md5,size&Tdrive link OR post build_error&trimmed build.log in TG
 telegram_post(){
  if [ -f $(pwd)/out/target/product/${T_DEVICE}/${ZIPNAME} ]; then
-        rclone copy ${ZIP} vince:/Rums/${rom} -P
+        rclone copy ${ZIP} vince-new:/Roms/${rom} -P
         MD5CHECK=$(md5sum ${ZIP} | cut -d' ' -f1)
         DWD=${TDRIVE}${rom}/${ZIPNAME}
         telegram_message "
