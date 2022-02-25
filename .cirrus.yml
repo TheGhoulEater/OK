@@ -12,8 +12,8 @@ task:
     CHATID: "ENCRYPTED[8078f31e1bf2d625fb0ef1346a738cdae4904eba08dce8e1794992dd2a1bdcdd01175a7cd6e3f3581132bcbbbeaabd72]"
     BOTTOKEN: "ENCRYPTED[a87766b6845019436c09ed4cb07e6452a9411d094d40e3c28bd2c549d4eefd7dbba913acc303a3103ef5835e6ee6aff1]"
     TDRIVE: "ENCRYPTED[cbaab5da6f5b514e30355aa774edd14c76a15cdbc6b2e141cd6f55b796e69e5e4783eda32915d6038c9d07ccf1adea9a]"
-    rom: "ProjectElixir"
-    T_DEVICE: "vince"
+  ok_script:
+      - echo Gay
 #  down_cc_background_script:
 #      - bash dc.sh
 #  up_cc_background_script:
