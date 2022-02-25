@@ -63,9 +63,9 @@ SDIFF=$((SYNC_END - SYNC_START))
 
 # Send 'Build Triggered' message in TG along with sync time
 telegram_message "
-        *$rom Build Triggered*
-        *Date:* \`$(date +"%d-%m-%Y %T")\`
-        *Sync finished after $((SDIFF / 60)) minute(s) and $((SDIFF % 60)) seconds*"  &> /dev/null
+*$rom Build Triggered*
+*Date:* \`$(date +"%d-%m-%Y %T")\`
+*Sync Time:* \`$((SDIFF / 60)) minute(s) and $((SDIFF % 60)) seconds\`"  &> /dev/null
 
 
 # export build start time
@@ -109,11 +109,12 @@ telegram_post(){
         MD5CHECK=$(md5sum ${ZIP} | cut -d' ' -f1)
         DWD=${TDRIVE}${rom}/${ZIPNAME}
         telegram_message "
-        *Build finished after $(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds*
-
+        *$rom Build Finished Successfully*
+        
+        *Build Time:* `\$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
         *ROM:* \`${ZIPNAME}\`
         *MD5 Checksum:* \`${MD5CHECK}\`
-        *Download Link:* [Tdrive](${DWD})
+        *Download Link:* [Here](${DWD})
         *Size:* \`${ZIPSIZE}\`
         *Date:*  \`$(date +"%d-%m-%Y %T")\`" &> /dev/null
  else
@@ -124,10 +125,11 @@ telegram_post(){
         LOG2=$(pwd)/out/build_error
         TRANSFER=$(curl --upload-file ${LOG1} https://transfer.sh/$(basename ${LOG1}))
         telegram_build ${LOG2} "
-        *Build failed to compile after $(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds*
+        *$rom Build Failed to Compile*
+    *Build Time:* \`$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
 
-        *Build Log:* ${TRANSFER}
-        *Date:*  $(date +"%d-%m-%Y %T")" &> /dev/null
+    *Build Log:* [Here](${TRANSFER})
+    *Date:*  $(date +"%d-%m-%Y %T")" &> /dev/null
  fi
 }
 
