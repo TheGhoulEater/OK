@@ -12,7 +12,7 @@
     BOTTOKEN: "ENCRYPTED[70de2e86306755064b57f3b8e952c888b2be6cf991a0163b3db1c7082284ca513f4979c7c30490c37d17601f900eed3e]"
     CHATID: "ENCRYPTED[d8f6e47a49a2c08ca7838c4bfa10f63ebeabf164817065ca1061ceb8f8bc733941a38b809b71f0161373c54099f1023e]"
     GH_TOKEN: "ENCRYPTED[56e931c76a1c62e7211e5eeded52b4ea4421afc759b6feaa62d1d35b63550651b1b390775c8bc7df909f366dba0b42e5]"
-    rom: "ProjectElixir"
+    rom: "ProjectSakura"
     T_DEVICE: "vince"
   down_cc_background_script:
       - bash dc.sh
