@@ -84,9 +84,9 @@ ccache -z
 
 # Build commands for each roms on basis of rom flag in .yml / an additional full build.log is kept.
 case "${rom}" in
- "ProjectElixir") mka sepolicy -j18 2>&1 | tee build.log
+ "ProjectElixir") m sepolicy -j18 2>&1 | tee build.log
     ;;
- "ProjectSakura") make sepolicy -j18 2>&1 | tee build.log
+ "ProjectSakura") mka sepolicy -j18 2>&1 | tee build.log
     ;;
  *) echo "Invalid option!"
     exit 1
@@ -111,24 +111,24 @@ telegram_post(){
         DWD=${TDRIVE}${rom}/${ZIPNAME}
         telegram_message "
         *$rom Build Finished Successfully*
-        *Build Time:* \`$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
-        *ROM:* \`${ZIPNAME}\`
-        *MD5 Checksum:* \`${MD5CHECK}\`
-        *Download Link:* [Here](${DWD})
-        *Size:* \`${ZIPSIZE}\`
-        *Date:*  \`$(date +"%d-%m-%Y %T")\`" &> /dev/null
+ *Build Time:* \`$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
+ *ROM:* \`${ZIPNAME}\`
+ *MD5 Checksum:* \`${MD5CHECK}\`
+ *Download Link:* [Here](${DWD})
+ *Size:* \`${ZIPSIZE}\`
+ *Date:*  \`$(date +"%d-%m-%Y %T")\`" &> /dev/null
  else
         BUILD_LOG=$(pwd)/build.log
         tail -n 10000 ${BUILD_LOG} >> $(pwd)/buildtrim.txt
         LOG1=$(pwd)/buildtrim.txt
         echo "CHECK BUILD LOG" >> $(pwd)/out/build_error
         LOG2=$(pwd)/out/build_error
-        TRANSFER=$(curl --upload-file ${LOG1} https://transfer.sh/$(basename ${LOG1}))
+        TRANSFER=$(curl -T ${LOG1} https://temp.sh/$(basename ${LOG1}))
         telegram_build ${LOG2} "
         *$rom Build Failed to Compile*
-    *Build Time:* \`$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
-    *Build Log:* [Here](${TRANSFER})
-    *Date:*  $(date +"%d-%m-%Y %T")" &> /dev/null
+*Build Time:* \`$(($DIFF / 3600)) hour(s) and $(($DIFF % 3600 / 60)) minute(s) and $(($DIFF % 60)) seconds\`
+*Build Log:* [Here](${TRANSFER})
+*Date:*  $(date +"%d-%m-%Y %T")" &> /dev/null
  fi
 }
 
