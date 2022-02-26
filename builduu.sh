@@ -2,6 +2,7 @@
 
 mkdir -p /tmp/rom
 cd /tmp/rom
+pwd
 
 # export sync start time
 SYNC_START=$(date +"%s")
@@ -46,22 +47,15 @@ telegram_build() {
 }
 
 # Function to be chose based on rom flag in .yml
-#case "${rom}" in
-# "ProjectElixir") rom_one
-#    ;;
-# "ProjectSakura") rom_two
-#    ;;
-# *) echo "Invalid option!"
-#    exit 1
-#    ;;
-#esac
-repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/official_manifest -b snow -g default,-device,-mips,-darwin,-notdefault
-git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b elixir-12 .repo/local_manifests
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
-repo sync --force-sync -j1 --fail-fast
-export SELINUX_IGNORE_NEVERALLOWS=true
-source build/envsetup.sh
-lunch aosp_vince-userdebug
+case "${rom}" in
+ "ProjectElixir") rom_one
+    ;;
+ "ProjectSakura") rom_two
+    ;;
+ *) echo "Invalid option!"
+    exit 1
+    ;;
+esac
 
 # export sync end time and diff with sync start
 SYNC_END=$(date +"%s")
@@ -89,16 +83,16 @@ export CCACHE_MAXSIZE=50G
 ccache -z
 
 # Build commands for each roms on basis of rom flag in .yml / an additional full build.log is kept.
-#case "${rom}" in
-# "ProjectElixir") mka sepolicy -j18 2>&1 | tee build.log
-#    ;;
-# "ProjectSakura") make sepolicy -j18 2>&1 | tee build.log
-#    ;;
-# *) echo "Invalid option!"
-#    exit 1
-#    ;;
-#esac
-mka sepolicy | tee build.log
+case "${rom}" in
+ "ProjectElixir") mka sepolicy -j18 2>&1 | tee build.log
+    ;;
+ "ProjectSakura") make sepolicy -j18 2>&1 | tee build.log
+    ;;
+ *) echo "Invalid option!"
+    exit 1
+    ;;
+esac
+
 ls -a $(pwd)/out/target/product/${T_DEVICE}/ # show /out contents
 BUILD_END=$(date +"%s")
 DIFF=$((BUILD_END - BUILD_START))
