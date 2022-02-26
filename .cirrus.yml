@@ -2,7 +2,7 @@
   name: IDFK
   timeout_in: 120m
   container:
-    dockerfile: Dockerfile
+    image: marvelmathesh/docker:rom
     cpu: 8
     memory: 32G
   environment:
@@ -14,11 +14,11 @@
     GH_TOKEN: "ENCRYPTED[56e931c76a1c62e7211e5eeded52b4ea4421afc759b6feaa62d1d35b63550651b1b390775c8bc7df909f366dba0b42e5]"
     rom: "ProjectElixir"
     T_DEVICE: "vince"
-#  down_cc_background_script:
-#      - bash dc.sh
-#  up_cc_background_script:
-#      - bash uc.sh
+  down_cc_background_script:
+      - bash dc.sh
+  up_cc_background_script:
+      - bash uc.sh
   builduu_script:
       - bash builduu.sh
-#  final_up_cc_script:
-#      - bash fuc.sh
+  final_up_cc_script:
+      - bash fuc.sh
