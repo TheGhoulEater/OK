@@ -2,7 +2,7 @@
   name: IDFK
   timeout_in: 120m
   container:
-    image: prajwals3/rum-docker:ubuntu
+    dockerfile: Dockerfile
     cpu: 8
     memory: 32G
   environment:
