@@ -1,9 +1,9 @@
  task:
   name: IDFK
-  timeout_in: 120m
+  timeout_in: 140m
   container:
     dockerfile: Dockerfile
-    cpu: 10
+    cpu: 8
     memory: 32G
   environment:
     CIRRUS_WORKING_DIR: "/tmp/ci"
