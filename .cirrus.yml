@@ -3,7 +3,7 @@
   timeout_in: 120m
   container:
     dockerfile: Dockerfile
-    cpu: 8
+    cpu: 16
     memory: 32G
   environment:
     CIRRUS_WORKING_DIR: "/tmp/ci"
