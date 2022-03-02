@@ -14,7 +14,7 @@ echo "https://PrajjuS:${GH_TOKEN}@github.com" > ~/.git-credentials
 
 # Rom repo sync & dt ( Add roms and update case functions )
 rom_one(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/official_manifest -b snow
+     repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/manifest -b snow
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b CI .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
      export SELINUX_IGNORE_NEVERALLOWS=true
@@ -79,6 +79,7 @@ export CCACHE_COMPRESS=true
 export CCACHE_COMPRESSLEVEL=1
 export CCACHE_LIMIT_MULTIPLE=0.9
 export CCACHE_MAXSIZE=50G
+ccache -M 50G
 ccache -z
 
 # Build commands for each roms on basis of rom flag in .yml / an additional full build.log is kept.
