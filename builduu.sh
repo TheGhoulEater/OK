@@ -83,7 +83,7 @@ ccache -z
 
 # Build commands for each roms on basis of rom flag in .yml / an additional full build.log is kept.
 case "${rom}" in
- "ProjectElixir") mka init && mka bootimage #mmma packages/apps/Settings && mmma framework/base && mka bacon -j18 2>&1 | tee build.log
+ "ProjectElixir") mmma packages/apps/Settings # mmma framework/base && mka bacon -j18 2>&1 | tee build.log
     ;;
  "ProjectSakura") mka bacon -j18 2>&1 | tee build.log
     ;;
