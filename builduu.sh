@@ -14,7 +14,7 @@ echo "https://PrajjuS:${GH_TOKEN}@github.com" > ~/.git-credentials
 
 # Rom repo sync & dt ( Add roms and update case functions )
 rom_one(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/manifest -b snow
+     repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/official_manifest -b snow
      git clone https://github.com/PrajjuS/local_manifest_vince --depth 1 -b CI .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j8
      export SELINUX_IGNORE_NEVERALLOWS=true
