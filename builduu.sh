@@ -77,8 +77,8 @@ export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
 export CCACHE_COMPRESS=true
 export CCACHE_COMPRESSLEVEL=1
-export CCACHE_LIMIT_MULTIPLE=0.9
-export CCACHE_MAXSIZE=50G
+export CCACHE_LIMIT_MULTIPLE=1
+export CCACHE_MAXSIZE=150G
 ccache -z
 
 # Build commands for each roms on basis of rom flag in .yml / an additional full build.log is kept.
